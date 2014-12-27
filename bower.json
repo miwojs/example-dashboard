@@ -1,0 +1,14 @@
+{
+	"name": "example-dashboard",
+	"description": "Example of dashboard application in miwo",
+	"version": "0.0.1",
+	"dependencies": {
+		"bootstrap": "latest",
+		"fontawesome": "latest",
+		"miwo": "latest",
+		"miwo-app": "latest",
+		"miwo-ui": "latest",
+		"miwo-data": "latest",
+		"miwo-navside": "latest"
+	}
+}

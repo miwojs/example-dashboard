@@ -1,0 +1,12 @@
+{
+	"nav": {
+		"visitors": "Visitors",
+		"channels": "Channels",
+		"management": "Management",
+		"users": "Users",
+		"emails": "Emails",
+		"settings": "Settings",
+		"account": "Account",
+		"profile": "Profile"
+	}
+}

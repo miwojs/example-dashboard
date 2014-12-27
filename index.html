@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<meta charset='utf-8'>
+
+	<link rel="stylesheet" href="vendor/css/vendor.css">
+	<link rel="stylesheet" href="dist/css/app.css">
+
+	<script src="vendor/js/vendor.js"></script>
+	<script src="dist/js/app.js"></script>
+</head>
+<body id="body">
+
+<script>
+miwo.ready(function() {
+	// initialize di injector
+	App.bootstrap(); // optional di config
+
+	// load translates
+	miwo.require("dist/translates/en.js");
+	miwo.require("dist/translates/cs.js");
+	miwo.translator.use('cs');
+
+	// run application
+	var application = miwo.service('application');
+	application.run('body'); // render into body
+});
+</script>
+
+</body>
+</html>

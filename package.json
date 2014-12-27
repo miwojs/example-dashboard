@@ -1,0 +1,24 @@
+{
+	"name": "example-dashboard",
+	"description": "Example of dashboard application in miwo",
+	"version": "0.0.1",
+	"devDependencies": {
+		"gulp": "~3.8.10",
+		"gulp-util": "~3.0.1",
+		"gulp-rename": "~1.2.0",
+		"gulp-uglify": "~1.0.1",
+		"gulp-browserify": "~0.5.0",
+		"gulp-minify-css": "~0.3.11",
+		"gulp-less": "~1.3.6",
+		"gulp-size": "~1.1.0",
+		"gulp-plumber": "~0.6.6",
+		"gulp-newer": "~0.3.0",
+		"gulp-imagemin": "~1.2.1",
+		"gulp-concat": "~2.4.2",
+		"gulp-optimizebrowserify": "~0.0.1",
+		"gulp-miwo-translates": "~0.0.1",
+		"caching-coffeeify": "~0.4.0",
+		"run-sequence": "~1.0.1",
+		"del": "~0.1.3"
+	}
+}
