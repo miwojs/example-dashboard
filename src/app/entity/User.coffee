@@ -1,4 +1,4 @@
-class User extends Miwo.Entity
+class User extends Miwo.data.Entity
 
 	@field 'id', {type: 'int'}
 	@field 'name', {type: 'string'}

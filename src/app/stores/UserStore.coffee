@@ -1,4 +1,4 @@
-class UsersStore extends Miwo.Store
+class UsersStore extends Miwo.data.Store
 
 	entity: require('../entity/User')
 

@@ -2,11 +2,11 @@ module.exports =
 
 	"miwo-app":
 		namespace: 'App'
+		defaultController: 'visitors'
+		defaultAction: 'default'
 		controllers:
 			visitors: require('./controllers/VisitorsController')
 			users: require('./controllers/UsersController')
-		defaultController: 'visitors'
-		defaultAction: 'default'
 
 	"miwo-templates":
 		dir: 'dist/templates'
