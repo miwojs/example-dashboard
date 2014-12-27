@@ -22,7 +22,7 @@ var paths = {
 	watch: {
 		coffee: ['src/app/**/*.coffee'],
 		templates: ['src/templates/**/*.latte'],
-		less: ['src/less/*.less', 'vendor/**/*.less'],
+		less: ['src/less/*.less', 'bower_components/**/*.less'],
 		images: ['src/img/**/*'],
 		translates: ['src/translates/**/*.json']
 	},
@@ -44,9 +44,9 @@ var paths = {
 			"bower_components/miwo-ui/css/miwo-ui.css"
 		],
 		assets: [
-			"bower_components/miwo-ui/**/*.!(css|js|min.css|min.js|map)",
-			"bower_components/bootstrap/dist/**/*.!(css|js|min.css|min.js|map)",
-			"bower_components/fontawesome/**/*.!(css|js|min.css|min.js|map)"
+			"bower_components/miwo-ui/**/*.(png)",
+			"bower_components/bootstrap/dist/**/*.(eot|svg|ttf|woff|otf)",
+			"bower_components/fontawesome/**/*.(eot|svg|ttf|woff|otf)"
 		]
 	}
 };
