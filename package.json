@@ -19,6 +19,7 @@
 		"gulp-miwo-translates": "~0.0.1",
 		"caching-coffeeify": "~0.4.0",
 		"run-sequence": "~1.0.1",
-		"del": "~0.1.3"
+		"del": "~0.1.3",
+		"main-bower-files": "~2.4.0"
 	}
 }

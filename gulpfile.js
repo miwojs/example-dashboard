@@ -13,6 +13,7 @@ var size = require('gulp-size');
 var sequence = require('run-sequence');
 var del = require('del');
 var miwoTranslates = require('gulp-miwo-translates');
+var mainBowerFiles = require('main-bower-files');
 
 
 var paths = {
@@ -25,29 +26,6 @@ var paths = {
 		less: ['src/less/*.less', 'bower_components/**/*.less'],
 		images: ['src/img/**/*'],
 		translates: ['src/translates/**/*.json']
-	},
-	vendor: {
-		js: [
-			"bower_components/mootools-core/dist/mootools-core.js",
-			"bower_components/miwo/js/miwo.js",
-			"bower_components/miwo-app/js/miwo-app.js",
-			"bower_components/miwo-data/js/miwo-data.js",
-			"bower_components/miwo-latte/js/miwo-latte.js",
-			"bower_components/miwo-templates/js/miwo-templates.js",
-			"bower_components/miwo-ui/js/miwo-ui.js",
-			"bower_components/miwo-navside/js/miwo-navside.js"
-		],
-		css: [
-			"bower_components/fontawesome/css/font-awesome.css",
-			"bower_components/bootstrap/dist/css/bootstrap.css",
-			"bower_components/miwo/css/miwo.css",
-			"bower_components/miwo-ui/css/miwo-ui.css"
-		],
-		assets: [
-			"bower_components/miwo-ui/**/*.(png)",
-			"bower_components/bootstrap/dist/**/*.(eot|svg|ttf|woff|otf)",
-			"bower_components/fontawesome/**/*.(eot|svg|ttf|woff|otf)"
-		]
 	}
 };
 
@@ -67,8 +45,25 @@ var pipes = {
 
 
 
-// COMMON TASKS
+// MAIN TASKS
 gulp.task('default', ['build']);
+
+gulp.task('build', function(cb) {
+	sequence('clean', ['app-build', 'vendor-build'], cb);
+});
+
+gulp.task('dist', function(cb) {
+	sequence('clean', ['app-dist', 'vendor-build'], cb);
+});
+
+gulp.task('watch', function() {
+	gulp.start('build');
+	gulp.watch(paths.watch.coffee, ['app-compile-js']);
+	gulp.watch(paths.watch.less, ['app-compile-css']);
+	gulp.watch(paths.watch.translates, ['app-compile-translates']);
+	gulp.watch(paths.watch.images, ['app-copy-images']);
+	gulp.watch(paths.watch.templates, ['app-copy-templates']);
+});
 
 gulp.task('clean', function(cb) {
 	del(['dist/**/*'], cb)
@@ -133,63 +128,8 @@ gulp.task('app-dist', function(cb) {
 
 
 // VENDOR TASKS
-gulp.task('vendor-copy-assets', function() {
-	return gulp.src(paths.vendor.assets)
+gulp.task('vendor-build', function() {
+	return gulp.src(mainBowerFiles(), { base: './bower_components' })
 		.pipe(newer(paths.vendorDir))
 		.pipe(gulp.dest(paths.vendorDir));
-});
-
-gulp.task('vendor-concat-js', function() {
-	return gulp.src(paths.vendor.js)
-		.pipe(concat('vendor.js', {newLine: ';'}))
-		.pipe(gulp.dest(paths.vendorDir+'/js'));
-});
-
-gulp.task('vendor-concat-css', function() {
-	return gulp.src(paths.vendor.css)
-		.pipe(concat('vendor.css'))
-		.pipe(gulp.dest(paths.vendorDir+'/css'));
-});
-
-gulp.task('vendor-minify-js', ['vendor-concat-js'], function() {
-	return gulp.src(paths.vendorDir+'/js/*.js')
-		.pipe(uglify())
-		.pipe(size({title: 'VENDOR all js files'}))
-		.pipe(gulp.dest(paths.vendorDir+'/js'));
-});
-
-gulp.task('vendor-minify-css', ['vendor-concat-css'], function() {
-	return gulp.src(paths.vendorDir+'/css/*.css')
-		.pipe(minifycss({keepBreaks:true}))
-		.pipe(size({title: 'VENDOR all css files'}))
-		.pipe(gulp.dest(paths.vendorDir+'/css'));
-});
-
-gulp.task('vendor-build', function(cb) {
-	sequence(['vendor-copy-assets', 'vendor-concat-js', 'vendor-concat-css'], cb);
-});
-
-gulp.task('vendor-dist', function(cb) {
-	sequence(['vendor-copy-assets', 'vendor-minify-js', 'vendor-minify-css'], cb);
-});
-
-
-// MAIN TASKS
-gulp.task('build', function(cb) {
-	sequence('clean', ['app-build', 'vendor-build'], cb);
-});
-
-gulp.task('dist', function(cb) {
-	sequence('clean', ['app-dist', 'vendor-dist'], cb);
-});
-
-gulp.task('watch', function() {
-	gulp.start('build');
-	gulp.watch(paths.watch.coffee, 'app-compile-js');
-	gulp.watch(paths.watch.less, 'app-compile-css');
-	gulp.watch(paths.watch.translates, 'app-compile-translates');
-	gulp.watch(paths.watch.images, 'app-copy-images');
-	gulp.watch(paths.watch.templates, 'app-copy-templates');
-	gulp.watch(paths.vendor.js, 'vendor-concat-js');
-	gulp.watch(paths.vendor.css, 'vendor-concat-css');
 });
