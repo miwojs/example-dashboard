@@ -2,33 +2,35 @@ class Navigation extends Miwo.navside.Navigation
 
 	doInit: () ->
 		super
-		@addItem('visitors', miwo.tr('app.nav.visitors'))
-			.set('icon', 'glyphicon glyphicon-comment')
-			.set('target', '#visitors')
+		@addItem 'visitors',
+			text: miwo.tr('app.nav.visitors')
+			icon: 'glyphicon glyphicon-comment'
+			target: '#visitors'
+			badge: '14'
+		@addItem 'channels',
+			text: miwo.tr('app.nav.channels')
+			icon: 'glyphicon glyphicon-folder-open'
+			target: '#channels'
 
-		@addItem('channels', miwo.tr('app.nav.channels'))
-			.set('icon', 'glyphicon glyphicon-folder-open')
-			.set('target', '#channels')
+		group = @addItemGroup 'management',
+			text: miwo.tr('app.nav.management')
+			icon: 'glyphicon glyphicon-cog'
+		group.addItem 'users',
+			text: miwo.tr('app.nav.users')
+			target: '#users'
+		group.addItem 'emails',
+			text: miwo.tr('app.nav.emails')
+			target: '#emails'
 
-
-		group = @addItemGroup('management', miwo.tr('app.nav.management'))
-		group.set('icon', 'glyphicon glyphicon-cog')
-
-		group.addItem('users', miwo.tr('app.nav.users'))
-			.set('target', '#users')
-
-		group.addItem('emails', miwo.tr('app.nav.emails'))
-			.set('target', '#emails')
-
-
-		group = @addItemGroup('settings', miwo.tr('app.nav.settings'))
-		group.set('icon', 'glyphicon glyphicon-wrench')
-
-		group.addItem('account', miwo.tr('app.nav.account'))
-			.set('target', '#account')
-
-		group.addItem('profile', miwo.tr('app.nav.profile'))
-			.set('target', '#profile')
+		group = @addItemGroup 'settings',
+			text: miwo.tr('app.nav.settings')
+			icon: 'glyphicon glyphicon-wrench'
+		group.addItem 'account',
+			text: miwo.tr('app.nav.account')
+			target: '#account'
+		group.addItem 'profile',
+			text: miwo.tr('app.nav.profile')
+			target: '#profile'
 		return
 
 

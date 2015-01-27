@@ -6,6 +6,7 @@ module.exports =
 		defaultAction: 'default'
 		controllers:
 			visitors: require('./controllers/VisitorsController')
+			emails: require('./controllers/EmailsController')
 			users: require('./controllers/UsersController')
 
 	"miwo-templates":

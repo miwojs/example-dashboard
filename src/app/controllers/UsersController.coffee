@@ -4,15 +4,15 @@ DefaultView = require '../views/users/DefaultView'
 class UsersController extends Miwo.app.Controller
 
 
-	startup: () ->
+	startup: ->
 		return
 
 
-	beforeRender: () ->
+	beforeRender: ->
 		return
 
 
-	afterRender: () ->
+	afterRender: ->
 		return
 
 
@@ -22,7 +22,7 @@ class UsersController extends Miwo.app.Controller
 
 
 	createDefaultView: (config) ->
-		# custom view factory (see VisitorsControler registerView)
+		# custom view factory (see VisitorsController registerView)
 		return new DefaultView(config)
 
 

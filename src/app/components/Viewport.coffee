@@ -7,7 +7,7 @@ class Viewport extends Miwo.app.Viewport
 
 	doInit: () ->
 		super()
-		navWidth = 200
+		navWidth = 250
 		headerHeight = 52
 
 		@addContent

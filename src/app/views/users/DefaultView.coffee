@@ -12,6 +12,7 @@ class UsersDefaultView extends Miwo.Container
 	createComponentUsersGrid: ->
 		grid = new Miwo.Grid
 			paginator: true
+			# actionBtnSize: 'xs'
 		grid.setStore(miwo.store('user'))
 
 		# columns
